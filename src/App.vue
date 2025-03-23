@@ -14,7 +14,7 @@
 import TimeInput from './components/TimeInput.vue'
 import LogDisplay from './components/LogDisplay.vue'
 import axios from 'axios'
-
+const host = window.location.hostname;
 export default {
   name: 'App',
   components: {
@@ -39,7 +39,7 @@ export default {
       this.isLoading = true
       this.errorMessage = ''
       try {
-        const response = await axios.get(`http://localhost:5000/logs/${month}/${day}`)
+        const response = await axios.get(`http://${host}:5000/logs/${month}/${day}`)
         this.logEntries = response.data.entries
       } catch (error) {
         this.errorMessage = error.response?.data?.description || '获取日志失败'

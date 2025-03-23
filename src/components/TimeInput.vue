@@ -48,8 +48,8 @@ export default {
       try {
         this.error = ''
         this.$emit('fetch-logs', { 
-          month: String(this.month).padStart(2, '0'), 
-          day: String(this.day).padStart(2, '0')
+          month: this.month,
+          day: this.day
         })
       } catch (err) {
         this.error = '请输入有效的日期格式（MM/DD）'

@@ -6,7 +6,7 @@ import json
 
 app = Flask(__name__)
 CORS(app)
-
+contents=["心跳发送成功","BOT_WS链接已断开，正在尝试重连……","BOT_WS链接已因长时间未收到消息而主动断开","BOT_WS链接已断开，正在尝试重连……"]
 @app.route('/logs/<month>/<day>')
 def get_logs(month, day):
     if not re.match(r'^\d{1,2}$', month) or not re.match(r'^\d{1,2}$', day):
@@ -42,10 +42,13 @@ def get_logs(month, day):
     for log in log_entries:
         match = log_pattern.match(log)
         if match:
+            content = match.group(3) + ('\n' + '\n'.join(log.split('\n')[1:]) if len(log.split('\n')) > 1 else '')
+            if content in contents:
+                continue
             processed_logs.append({
                 "timestamp": match.group(1),
                 "level": match.group(2),
-                "content": match.group(3).strip()
+                "content": content
             })
     
     return jsonify({

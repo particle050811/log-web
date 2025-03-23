@@ -41,21 +41,25 @@ export default {
 <style scoped>
 .log-display {
   margin: 20px auto;
-  max-width: 600px;
+  max-width: 1200px;
+  overflow-y: auto;
 }
 
 .log-header {
   display: grid;
-  grid-template-columns: 120px 70px 1fr;
+  grid-template-columns: 120px 100px 1fr;
   gap: 8px;
   padding: 8px;
   font-weight: bold;
   border-bottom: 2px solid #42b983;
+  position: sticky;
+  top: 0;
+  background: white;
 }
 
 .log-entry {
   display: grid;
-  grid-template-columns: 120px 70px 1fr;
+  grid-template-columns: 120px 100px 1fr;
   gap: 8px;
   padding: 8px;
   border-bottom: 1px solid #eee;
@@ -86,4 +90,9 @@ export default {
 .debug { color: #3498db; }
 .warning { color: #f1c40f; }
 .error { color: #ff4757; }
+.content {
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 20px;
+}
 </style>

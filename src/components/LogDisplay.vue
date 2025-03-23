@@ -10,17 +10,14 @@
       <div v-else>
         <div class="log-header">
           <span>时间戳</span>
-          <span>日志级别</span>
           <span>内容</span>
         </div>
         <div 
           v-for="(entry, index) in entries" 
           :key="index"
           class="log-entry"
-          :class="entry.level.toLowerCase()"
         >
           <span class="timestamp">{{ entry.timestamp }}</span>
-          <span class="level">{{ entry.level }}</span>
           <span class="content">{{ entry.content }}</span>
         </div>
       </div>
@@ -47,9 +44,9 @@ export default {
 
 .log-header {
   display: grid;
-  grid-template-columns: 120px 100px 1fr;
-  gap: 8px;
-  padding: 8px;
+  grid-template-columns: minmax(80px, 0.12fr) 1fr;
+  gap: clamp(1px, 0.3vw, 3px);
+  padding: 4px 6px;
   font-weight: bold;
   border-bottom: 2px solid #42b983;
   position: sticky;
@@ -59,19 +56,14 @@ export default {
 
 .log-entry {
   display: grid;
-  grid-template-columns: 120px 100px 1fr;
-  gap: 8px;
-  padding: 8px;
+  grid-template-columns: minmax(80px, 0.12fr) 1fr;
+  gap: clamp(1px, 0.3vw, 3px);
+  padding: 4px 6px;
   border-bottom: 1px solid #eee;
 }
 
 .log-entry:hover {
   background-color: #f8f8f8;
-}
-
-.level {
-  text-transform: uppercase;
-  font-weight: bold;
 }
 
 .error-message {
@@ -86,10 +78,6 @@ export default {
   color: #42b983;
 }
 
-.info { color: #2c3e50; }
-.debug { color: #3498db; }
-.warning { color: #f1c40f; }
-.error { color: #ff4757; }
 .content {
   white-space: pre-wrap;
   word-break: break-word;

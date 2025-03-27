@@ -58,6 +58,12 @@ export default {
   padding: 16px;
 }
 
+@media (max-width: 768px) {
+  .app-container {
+    padding: 0;
+  }
+}
+
 h1 {
   color: #2c3e50;
   margin-bottom: 20px;

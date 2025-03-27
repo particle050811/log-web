@@ -2,10 +2,10 @@
   <div class="time-input">
     <form @submit.prevent="fetchLogs">
       <div class="input-group">
-        <input 
-          v-model="month" 
+        <input
+          v-model="month"
           type="number"
-          min="1" 
+          min="1"
           max="12"
           placeholder="MM"
           class="input-field"
@@ -15,14 +15,14 @@
         <input
           v-model="day"
           type="number"
-          min="1" 
+          min="1"
           max="31"
           placeholder="DD"
           class="input-field"
           required
         >
+        <button type="submit" class="submit-btn">查询日志</button>
       </div>
-      <button type="submit" class="submit-btn">查询日志</button>
     </form>
     <div v-if="error" class="error-msg">{{ error }}</div>
   </div>
@@ -64,6 +64,12 @@ export default {
   margin: 20px 0;
 }
 
+@media (max-width: 768px) {
+  .time-input {
+    margin: 20px 10px;
+  }
+}
+
 .input-group {
   display: flex;
   align-items: center;
@@ -71,8 +77,8 @@ export default {
 }
 
 .input-field {
-  width: 60px;
-  padding: 6px;
+  width: 40px;
+  padding: 4px;
   border: 1px solid #42b983;
   border-radius: 4px;
   font-size: 14px;
@@ -84,14 +90,14 @@ export default {
 }
 
 .submit-btn {
-  margin-top: 8px;
-  padding: 6px 16px;
+  padding: 8px 16px;
   background: #42b983;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
+  vertical-align: middle;
 }
 
 .error-msg {
